@@ -1,0 +1,84 @@
+const questions = [
+    {
+        question: 'What is the chemical symbol for gold?',
+        answers: [
+            { text: 'Au', correct: true },
+            { text: 'Ag', correct: false },
+            { text: 'Pb', correct: false },
+            { text: 'Fe', correct: false }
+        ]
+    },
+    {
+        question: 'What is the pH level of pure water?',
+        answers: [
+            { text: '6', correct: false },
+            { text: '7', correct: true },
+            { text: '8', correct: false },
+            { text: '9', correct: false }
+        ]
+    },
+    {
+        question: 'Which element has the atomic number 1?',
+        answers: [
+            { text: 'Hydrogen', correct: true },
+            { text: 'Helium', correct: false },
+            { text: 'Lithium', correct: false },
+            { text: 'Boron', correct: false }
+        ]
+    },
+    // Add more questions here
+];
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+function startQuiz() {
+    currentQuestionIndex = 0;
+    score = 0;
+    document.getElementById('score-container').innerText = '';
+    nextQuestion();
+}
+
+function nextQuestion() {
+    resetState();
+    showQuestion(questions[currentQuestionIndex]);
+}
+
+function showQuestion(question) {
+    const questionContainer = document.getElementById('question-container');
+    questionContainer.innerText = question.question;
+    const answerButtons = document.getElementById('answer-buttons');
+    question.answers.forEach(answer => {
+        const button = document.createElement('button');
+        button.innerText = answer.text;
+        button.classList.add('btn');
+        button.addEventListener('click', () => selectAnswer(answer));
+        answerButtons.appendChild(button);
+    });
+}
+
+function resetState() {
+    const answerButtons = document.getElementById('answer-buttons');
+    while (answerButtons.firstChild) {
+        answerButtons.removeChild(answerButtons.firstChild);
+    }
+}
+
+function selectAnswer(answer) {
+    const correct = answer.correct;
+    if (correct) {
+        score++;
+    }
+    document.getElementById('score-container').innerText = `Score: ${score}`;
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        nextQuestion();
+    } else {
+        document.getElementById('question-container').innerText = 'Quiz completed!';
+        document.getElementById('next-button').style.display = 'none';
+    }
+}
+
+document.getElementById('next-button').addEventListener('click', nextQuestion);
+
+startQuiz();
