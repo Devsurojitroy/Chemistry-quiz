@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa; /* Light cyan background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#quiz-container {
+    background: #ffffff; /* White background for the quiz container */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+}
+
+h1 {
+    color: #00796b; /* Teal color for the heading */
+    margin-bottom: 20px;
+}
+
+#question-container {
+    font-size: 20px;
+    color: #004d40; /* Darker teal for the question text */
+    margin-bottom: 20px;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #004d40; /* Darker teal on hover */
+}
+
+.btn:nth-child(odd) {
+    background-color: #004d40; /* Darker teal for odd buttons */
+}
+
+.btn:nth-child(even) {
+    background-color: #00796b; /* Lighter teal for even buttons */
+}
+
+#next-button {
+    background-color: #00796b; /* Teal background for the next button */
+    color: #ffffff;
+}
+
+#next-button:hover {
+    background-color: #004d40; /* Darker teal on hover for the next button */
+}
+
+#score-container {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #00796b; /* Teal color for the score text */
+}
